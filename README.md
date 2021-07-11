@@ -64,11 +64,11 @@ To launch SonarQube with community branch plugin and Traefik execute:
 
 ### Manual
 
-Check automated, those bash scripts were made to make Your life easier.
+Check [automated](#automated), those bash scripts were made to make Your life easier.
 
 ## Versioning
 
- Semantic versioning.
+Semantic versioning.
 
 ## Roadmap
 
