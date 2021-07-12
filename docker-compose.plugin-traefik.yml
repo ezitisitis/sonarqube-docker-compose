@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: mc1arke/sonarqube-with-community-branch-plugin:8.9-community
+    networks:
+      - proxy
+      - sonar_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.sonar.entrypoints=http"
+      - "traefik.http.routers.sonar.rule=Host(`${SONAR_DOMAIN}`)"
+      - "traefik.http.routers.sonar.middlewares=traefik-https-redirect"
+      - "traefik.http.routers.sonar-secure.entrypoints=https"
+      - "traefik.http.routers.sonar-secure.rule=Host(`${SONAR_DOMAIN}`)"
+      - "traefik.http.routers.sonar-secure.tls.certresolver=http"
+      - "traefik.http.services.sonar.loadbalancer.server.port=9000"
+ 
+networks:
+  sonar_network:
+    driver: bridge
+    internal: true
+  proxy:
+    external:
+      name: traefik_proxy
