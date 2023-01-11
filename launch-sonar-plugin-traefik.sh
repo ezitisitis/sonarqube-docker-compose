@@ -1,7 +1,9 @@
 #!/bin/bash
 
-cp .env.traefik.example .env
-vi .env
+if [ ! -f .env ]; then
+  cp .env.traefik.example .env
+  vi .env
+fi
 
 sysctl -w vm.max_map_count=262144
 sysctl -w fs.file-max=65536
