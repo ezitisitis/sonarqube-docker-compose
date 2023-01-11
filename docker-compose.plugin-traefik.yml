@@ -2,7 +2,7 @@ version: "3"
 
 services:
   sonarqube:
-    image: mc1arke/sonarqube-with-community-branch-plugin:9.7-community
+    image: mc1arke/sonarqube-with-community-branch-plugin:9.8-community
     networks:
       - proxy
       - sonar_network
